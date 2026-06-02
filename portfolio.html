@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;
+  --accent:#4f8ef7;--accent2:#7b5ea7;
+  --text:#f0f0f0;--muted:#888;--border:#222;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(12px);background:rgba(10,10,10,.8);border-bottom:1px solid var(--border);}
+.logo{font-weight:800;font-size:1.2rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:.2s;}
+.nav-links a:hover{color:var(--text);}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(79,142,247,.12) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.hero-content{position:relative;z-index:1;}
+.badge{display:inline-block;padding:.4rem 1rem;border:1px solid var(--accent);color:var(--accent);border-radius:999px;font-size:.8rem;font-weight:500;margin-bottom:1.5rem;letter-spacing:.05em;}
+h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:800;line-height:1.1;margin-bottom:1.2rem;}
+h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.subtitle{color:var(--muted);font-size:1.1rem;max-width:520px;margin:0 auto 2.5rem;line-height:1.7;}
+.btn{display:inline-block;padding:.85rem 2rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;border-radius:8px;font-weight:600;font-size:.95rem;transition:.2s;border:none;cursor:pointer;}
+.btn:hover{opacity:.85;transform:translateY(-2px);}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text);margin-left:1rem;}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+/* SECTIONS */
+section{padding:6rem 2rem;}
+.container{max-width:1000px;margin:0 auto;}
+.section-label{color:var(--accent);font-size:.8rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.8rem;}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:1rem;}
+.section-sub{color:var(--muted);max-width:500px;line-height:1.7;margin-bottom:3.5rem;}
+.divider{width:50px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px;margin-bottom:3.5rem;}
+
+/* ABOUT */
+#about{background:var(--bg2);}
+.about-grid{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:center;}
+.avatar{width:180px;height:180px;border-radius:20px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:4rem;}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+.tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;}
+.tag{padding:.3rem .8rem;background:var(--bg3);border:1px solid var(--border);border-radius:6px;font-size:.82rem;color:var(--muted);}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.skill-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:.2s;}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-4px);}
+.skill-icon{font-size:2rem;margin-bottom:1rem;}
+.skill-name{font-weight:600;margin-bottom:.4rem;}
+.skill-desc{color:var(--muted);font-size:.87rem;line-height:1.6;margin-bottom:1.2rem;}
+.bar-bg{background:var(--bg3);border-radius:999px;height:5px;}
+.bar-fill{height:5px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+
+/* PROJECTS */
+#projects{background:var(--bg2);}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;}
+.project-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:.2s;}
+.project-card:hover{border-color:var(--accent);transform:translateY(-4px);}
+.project-thumb{height:160px;background:linear-gradient(135deg,var(--bg3),#1e1e2e);display:flex;align-items:center;justify-content:center;font-size:3rem;border-bottom:1px solid var(--border);}
+.project-body{padding:1.4rem;}
+.project-title{font-weight:700;margin-bottom:.5rem;}
+.project-desc{color:var(--muted);font-size:.87rem;line-height:1.6;margin-bottom:1rem;}
+.project-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;}
+.ptag{padding:.25rem .6rem;background:rgba(79,142,247,.1);color:var(--accent);border-radius:5px;font-size:.75rem;font-weight:500;}
+.project-link{color:var(--accent);font-size:.85rem;font-weight:500;text-decoration:none;}
+.project-link:hover{text-decoration:underline;}
+
+/* FOOTER */
+footer{padding:3rem 2rem;text-align:center;border-top:1px solid var(--border);color:var(--muted);font-size:.87rem;}
+footer a{color:var(--accent);text-decoration:none;}
+
+/* FADE-IN */
+.fade{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.fade.visible{opacity:1;transform:none;}
+@media(max-width:640px){
+  .about-grid{grid-template-columns:1fr;}
+  .nav-links{gap:1rem;}
+  .btn-ghost{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">YourName.</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content fade">
+    <div class="badge">✦ Available for new projects</div>
+    <h1>Freelancer &<br><span>Consultant</span></h1>
+    <p class="subtitle">I help businesses grow through thoughtful strategy, creative problem-solving, and impactful execution.</p>
+    <a href="#projects" class="btn">View My Work</a>
+    <a href="#about" class="btn btn-ghost">About Me</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid fade">
+      <div><div class="avatar">👤</div></div>
+      <div class="about-text">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Hello, I'm <span style="color:var(--accent)">Your Name</span></h2>
+        <div class="divider"></div>
+        <p>I'm a freelancer and consultant with a passion for delivering results. I partner with businesses and individuals to solve complex challenges — from strategy to execution.</p>
+        <p>With years of experience across various industries, I bring a fresh perspective and a results-driven mindset to every project I take on.</p>
+        <div class="tags">
+          <span class="tag">Strategic Thinking</span>
+          <span class="tag">Problem Solver</span>
+          <span class="tag">Remote-Friendly</span>
+          <span class="tag">Fast Delivery</span>
+          <span class="tag">Client-Focused</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="fade">
+      <div class="section-label">What I Do</div>
+      <h2 class="section-title">My Skills</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card fade">
+        <div class="skill-icon">💡</div>
+        <div class="skill-name">Business Strategy</div>
+        <div class="skill-desc">Developing clear, actionable plans that drive sustainable growth and competitive advantage.</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-card fade">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Data & Analytics</div>
+        <div class="skill-desc">Turning raw data into meaningful insights to inform smarter business decisions.</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-card fade">
+        <div class="skill-icon">🎯</div>
+        <div class="skill-name">Project Management</div>
+        <div class="skill-desc">Keeping complex projects on track, on time, and within budget — from kickoff to delivery.</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-card fade">
+        <div class="skill-icon">🤝</div>
+        <div class="skill-name">Client Relations</div>
+        <div class="skill-desc">Building strong, lasting relationships built on trust, communication, and transparency.</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-card fade">
+        <div class="skill-icon">🚀</div>
+        <div class="skill-name">Growth Marketing</div>
+        <div class="skill-desc">Designing and executing campaigns that attract, convert, and retain the right customers.</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:78%"></div></div>
+      </div>
+      <div class="skill-card fade">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-name">Process Optimization</div>
+        <div class="skill-desc">Streamlining workflows to reduce friction, cut costs, and improve team performance.</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="fade">
+      <div class="section-label">My Work</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card fade">
+        <div class="project-thumb">📈</div>
+        <div class="project-body">
+          <div class="project-title">Growth Strategy Overhaul</div>
+          <div class="project-desc">Redesigned go-to-market strategy for a SaaS startup, resulting in 3x lead growth in 6 months.</div>
+          <div class="project-tags"><span class="ptag">Strategy</span><span class="ptag">SaaS</span><span class="ptag">Growth</span></div>
+          <a href="#" class="project-link">View Case Study →</a>
+        </div>
+      </div>
+      <div class="project-card fade">
+        <div class="project-thumb">🏗️</div>
+        <div class="project-body">
+          <div class="project-title">Operational Restructure</div>
+          <div class="project-desc">Helped a mid-sized firm cut operational costs by 40% through process mapping and automation.</div>
+          <div class="project-tags"><span class="ptag">Operations</span><span class="ptag">Automation</span></div>
+          <a href="#" class="project-link">View Case Study →</a>
+        </div>
+      </div>
+      <div class="project-card fade">
+        <div class="project-thumb">🌐</div>
+        <div class="project-body">
+          <div class="project-title">Market Expansion Plan</div>
+          <div class="project-desc">Developed a full market entry strategy for Southeast Asia, spanning 4 countries and 3 industries.</div>
+          <div class="project-tags"><span class="ptag">Market Research</span><span class="ptag">SEA</span></div>
+          <a href="#" class="project-link">View Case Study →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & built with ♥ — <a href="#">yourname@email.com</a></p>
+  <p style="margin-top:.5rem;font-size:.8rem;">© 2026 Your Name. All rights reserved.</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold:.15});
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
